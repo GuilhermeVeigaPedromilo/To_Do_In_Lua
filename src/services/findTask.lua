@@ -1,12 +1,15 @@
-local function findTask(tasks, id_task)
-    for i, n in ipairs(tasks) do
-        if n.id == id_task then
-            print("\nTask found: \n- " .. n.title)
-            return n
-        end
+local taskModel = require("src.models.taskModel")
+local printTaskService = require("src.services.printTask")
+
+local function findTask(id_task)
+    local task = taskModel.get_findTask(id_task)
+    if task then
+        printTaskService(task)
+        return task
+    else
+        print("\nError: cannot possible find this task, try again")
+        return nil
     end
-    print("Error: that task does not exist")
-    return nil
 end
 
 return findTask

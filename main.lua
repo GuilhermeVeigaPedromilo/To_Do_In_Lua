@@ -5,19 +5,17 @@ local removeTaskService = require("src.services.removeTask")
 local toggleStatusService = require("src.services.toggleStatus")
 local findTaskService = require("src.services.findTask")
 
-local tasks = {}
-local lastId_registered = 0
+insertTaskService(createTaskService("Task A", "Description"))
+insertTaskService(createTaskService("Task B", ""))
+insertTaskService(createTaskService("Task C", "Description B"))
+insertTaskService(createTaskService())
+listTasksService()
 
-insertTaskService(tasks, createTaskService("Task 1", lastId_registered), lastId_registered)
-lastId_registered = lastId_registered + 1
-insertTaskService(tasks, createTaskService("Task 2", lastId_registered), lastId_registered)
-lastId_registered = lastId_registered + 1
-insertTaskService(tasks, createTaskService("Task 3", lastId_registered), lastId_registered)
-lastId_registered = lastId_registered + 1
-
-findTaskService(tasks, 2)
-removeTaskService(tasks, 1)
-findTaskService(tasks, 1)
-findTaskService(tasks, 3)
-toggleStatusService(tasks, 2)
-listTasksService(tasks)
+findTaskService(68)
+findTaskService(1)
+toggleStatusService(69)
+toggleStatusService(1)
+toggleStatusService(70)
+listTasksService()
+removeTaskService(2)
+removeTaskService(73)

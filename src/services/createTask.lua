@@ -1,10 +1,15 @@
-local function createTask(title, lastId_registered)
+local function createTask(title, description)
     local newTask = {
-        id = lastId_registered + 1,
         title = title,
-        status = false
+        description = description
     }
-    lastId_registered = lastId_registered + 1
+    if newTask.title == nil or newTask.title == "" then
+        newTask.title = "Untitled Task"
+    end
+
+    if newTask.description == nil or newTask.description == "" then
+        newTask.description = "No description"
+    end
     return newTask
 end
 

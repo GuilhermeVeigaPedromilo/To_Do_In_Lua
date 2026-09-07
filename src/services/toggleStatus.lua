@@ -1,11 +1,16 @@
 local findTaskService = require("src.services.findTask")
+local taskModel = require("src.models.taskModel")
 
-local toggleTask = function(tasks, id)
-    local task_founded = findTaskService(tasks, id)
+local toggleTask = function(id)
+    local task_founded = findTaskService(id)
     if task_founded then
-        task_founded.status = not task_founded.status
-        print("\nTask toggled successfully")
-        return true
+        if task_founded.status == 1 then
+            taskModel.put_toggleStatus(id, 0)
+            return true
+        else
+            taskModel.put_toggleStatus(id, 1)
+            return true
+        end
     else
         print("Error: cannot possible toggle this task")
         return false

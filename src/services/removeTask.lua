@@ -1,17 +1,15 @@
 local findTaskService = require("src.services.findTask")
+local taskModel = require("src.models.taskModel")
 
-local function removeTask(tasks, id)
-    local task_founded = findTaskService(tasks, id)
+local removeTask = function(id)
+    local task_founded = findTaskService(id)
     if task_founded then
-        for i, n in ipairs(tasks) do
-            if n.id == id then
-                table.remove(tasks, i)
-                print("\nTask removed successfully")
-                return true
-            end
+        if taskModel.delete_removeTask(id) == false then
+            print("\nError: cannot possible delete this task, try again")
+            return false
         end
     else
-        print("Error: cannot possible remove this task")
+        print("Error: cannot possible delete this task")
         return false
     end
 end

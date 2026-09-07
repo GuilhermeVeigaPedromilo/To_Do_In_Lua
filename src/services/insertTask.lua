@@ -1,5 +1,7 @@
-local function inserTask(tasks, task, lastId_registered)
-    table.insert(tasks, task)
+local taskModel = require("src.models.taskModel")
+
+local function insertTask(task)
+    taskModel.post_createTask(task.title, task.description)
 end
 
-return inserTask
+return insertTask

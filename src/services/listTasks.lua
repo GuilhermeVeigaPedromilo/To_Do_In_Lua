@@ -1,7 +1,9 @@
+local taskModel = require("src.models.taskModel")
+local printTaskService = require("src.services.printTask")
 
-local function listTasks(tasks)
-    for i, n in ipairs(tasks) do
-        print(n.id, n.title, n.status)
+local function listTasks()
+    for row in taskModel.get_allTasks() do
+        printTaskService(row)
     end
 end
 

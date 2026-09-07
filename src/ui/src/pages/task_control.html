@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Meu To-Do App</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -39,22 +38,12 @@
     <div class="container">
         <h1>Minha Aplicação To-Do</h1>
         <p>Abaixo você integrará suas rotinas de Lua para salvar e gerenciar tarefas.</p>
-        <button onclick="comunicarComLua()">Enviar Evento ao Lua</button>
+        <button onclick="invoke_task_creation(VerifyInvoke())">Enviar Evento ao Lua</button>
+        <button onclick="invoke_list_tasks(VerifyInvoke())">List Tasks</button>
     </div>
 
-    <script>
-    function comunicarComLua() {
-        console.log("Botão clicado na interface HTML.");
-        alert("ddd"); // Mantido para você ver o feedback visual inicial
-        
-        // Verifica e aciona o canal nativo padrão da biblioteca javalikescript
-        if (window.external && window.external.invoke) {
-            window.external.invoke("clicou_no_botao_invoke");
-        } else {
-            console.log("Ponte nativa 'window.external.invoke' indisponível.");
-        }
-    }
-</script>
-
+    <script src="../middleware/VerifyInvoke.js"></script>
+    <script src="../js/InvokeCreateTask.js"></script>
+    <script src="../js/InvokeListTask.js"></script>
 </body>
 </html>

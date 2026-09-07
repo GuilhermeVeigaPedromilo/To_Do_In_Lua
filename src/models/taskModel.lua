@@ -21,14 +21,19 @@ local function post_createTask(
     query:finalize()
 
     if query_status == require("lsqlite3").DONE then
-        print("Task created successfully")
+        return "Task created successfully"
     else
-        print("Error: couldn't create the task. Message: " .. dbConfig:errmsg())
+        return "Error: couldn't create the task. Message: " .. dbConfig:errmsg()
     end
 end
 
 local function get_allTasks()
-    return dbConfig:nrows("SELECT * FROM tasks")
+    local result = {
+        data = dbConfig:nrows("SELECT * FROM tasks"),
+        message = "All tasks were selected"
+    }
+
+    return result
 end
 
 local function get_findTask(id_task)

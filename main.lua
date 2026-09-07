@@ -1,21 +1,18 @@
-local createTaskService = require("src.services.createTask")
-local listTasksService = require("src.services.listTasks")
-local insertTaskService = require("src.services.insertTask")
-local removeTaskService = require("src.services.removeTask")
-local toggleStatusService = require("src.services.toggleStatus")
-local findTaskService = require("src.services.findTask")
+local webview = require("src.ui.webiview")
+local api = require("src.api.api")
+local json = require("cjson")
 
-insertTaskService(createTaskService("Task A", "Description"))
-insertTaskService(createTaskService("Task B", ""))
-insertTaskService(createTaskService("Task C", "Description B"))
-insertTaskService(createTaskService())
-listTasksService()
+local window
 
-findTaskService(68)
-findTaskService(1)
-toggleStatusService(69)
-toggleStatusService(1)
-toggleStatusService(70)
-listTasksService()
-removeTaskService(2)
-removeTaskService(73)
+window = webview.create(function (message)
+    print("\nAn event was triggered:")
+    print("Message by Frontend: " ..message)
+
+    local response = api.handle(message)
+    local responseDecoded = json.decode(response)
+
+    print("Answer by Internal API: " ..responseDecoded.message)
+    webview.eval(window, "handleResponse(`.. response ..`)")
+end)
+
+webview.run(window)

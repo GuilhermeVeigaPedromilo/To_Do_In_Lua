@@ -1,0 +1,22 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main h1 {
+    font-size: 25px;
+}
+
+main p {
+    font-size: 12px;
+}
+
+main section {
+    align-self: center;
+}
+
+main section span {
+    justify-self: left;
+    align-self: flex-start;
+}

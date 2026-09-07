@@ -29,6 +29,64 @@ gcc --version
 luarocks --version
 ```
 
+To the environment be compatible with web-view, it's necessary to install the lua-webview. For this, test your environment has installed the git with this command:
+
+```bash
+git --version
+```
+
+If it hasn't, so install with this command:
+
+```bash
+pacman -S git
+```
+
+Then you must use this command to install the make (Old Version of MinGW as native executable - .exe):
+
+```bash
+pacman -S mingw-w64-ucrt-x86_64-make
+```
+
+Test the make with command below:
+
+```bash
+mingw32-make --version
+```
+
+Then you must use the next command to discover if the liblua51 has some package or it's empty:
+
+```bash
+ls -la /ucrt64/lib/liblua51*
+```
+
+If it's empty, run this command to create a file waited by -llua51:
+
+```bash
+cp /ucrt64/lib/libluajit-5.1.dll.a /ucrt64/lib/liblua51.dll.a
+```
+
+Finally, you are able to install the lua-webview with this command:
+
+```bash
+luarocks --lua-version=5.1 install lua-webview \
+  LUA_INCDIR=/ucrt64/include/luajit-2.1 \
+  LUA_LIBDIR=/ucrt64/lib \
+  LUALIB=libluajit-5.1.dll.a \
+  LUA=/ucrt64/bin/luajit.exe \
+  MAKE=mingw32-make CC=gcc LD=gcc
+```
+
+The last package what you need to install is the lua-cjson. You must install it with this command:
+
+```bash
+luarocks --lua-version=5.1 install lua-cjson \
+  LUA_INCDIR=/ucrt64/include/luajit-2.1 \
+  LUA_LIBDIR=/ucrt64/lib \
+  LUALIB=libluajit-5.1.dll.a \
+  LUA=/ucrt64/bin/luajit.exe \
+  MAKE=mingw32-make CC=gcc LD=gcc
+```
+
 ## My Experience as Software Engineering Student with Lua (Example)
 
 In this example, I developed a console application as to do app. This example is a sample crud and that language (Lua) remember Python, ABAP (Native Language of SAP) and JS (JavaScript) syntax.

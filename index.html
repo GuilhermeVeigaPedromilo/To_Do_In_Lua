@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu To-Do App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            margin: 0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: #252538;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        h1 { margin-top: 0; color: #89b4fa; }
+        button {
+            background-color: #a6e3a1;
+            border: none;
+            padding: 10px 15px;
+            color: #11111b;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Minha Aplicação To-Do</h1>
+        <p>Abaixo você integrará suas rotinas de Lua para salvar e gerenciar tarefas.</p>
+        <button onclick="comunicarComLua()">Enviar Evento ao Lua</button>
+    </div>
+
+    <script>
+    function comunicarComLua() {
+        console.log("Botão clicado na interface HTML.");
+        alert("ddd"); // Mantido para você ver o feedback visual inicial
+        
+        // Verifica e aciona o canal nativo padrão da biblioteca javalikescript
+        if (window.external && window.external.invoke) {
+            window.external.invoke("clicou_no_botao_invoke");
+        } else {
+            console.log("Ponte nativa 'window.external.invoke' indisponível.");
+        }
+    }
+</script>
+
+</body>
+</html>

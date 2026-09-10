@@ -9,10 +9,10 @@ window = webview.create(function (message)
     print("Message by Frontend: " ..message)
 
     local response = api.handle(message)
-    local responseDecoded = json.decode(response)
 
-    print("Answer by Internal API: " ..responseDecoded.message)
-    webview.eval(window, "handleResponse(`.. response ..`)")
+    print("Answer by Internal API: " ..response.message)
+    local json_response = json.encode(response)
+    webview.eval(window, "handleResponse(".. json_response ..")")
 end)
 
 webview.run(window)

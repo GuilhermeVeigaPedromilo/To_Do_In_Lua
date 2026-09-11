@@ -1,0 +1,4 @@
+#include <JavaScriptCore/JavaScript.h>
+int main() {
+    return 0;
+}

@@ -1,7 +1,15 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/images/background.svg);
+    background-repeat: no-repeat;
+}
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: transparent;
 }
 
 main h1 {

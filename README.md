@@ -1,11 +1,51 @@
 # To_Do_In_Lua
 This is My First Project in Lua. Fully Compatible with Windows Environment.
 
+## Layered Architecture
+
+```bash
+To_Do_In_Lua/
+|
+|-data/
+|   |-to_do.db #- Database in SQLite
+|
+|-docs/
+|   |-guide_ubuntu.md
+|   |-guide_win.md
+|
+|-src/
+|   |-api/
+|   |   |-api.lua #- Call services based on UI request received by main.lua
+|   |
+|   |-config/
+|   |   |-database.lua #- Settings to the database connection
+|   |   
+|   |-models/
+|   |   |-taskModels.lua #- Models to the Queries on Database
+|   |
+|   |-services/ #- Services to do request to the database through models and validations
+|   |-ui/
+|   |   |-src/
+|   |   |   |-css/ #- Styles
+|   |   |   |-js/ #- Functions to Request to the backend or work behaviors on pages
+|   |   |   |-middleware/ #- Validations to the functions
+|   |   |   |-pages/ #- Application Pages
+|   |   |
+|   |   |-index.html #- Main page of the application
+|   |   |-webview.lua #- File to Generates the Webview and Receive Answers of Backend
+|   |
+|
+|-main.lua #- Main File (Bridge to communication between services and ui)
+|-test_drive.lua #- Sample Tour in Lua Focused on this applicaiton
+|-README.MD
+|-LICENSE
+```
+
 ## What Do You Need to Run?
 
 - Choose your environment to follow the guide:
-- [Windows (Verified in Windows 11)](./guide_win.md)
-- [Ubuntu (Veirified in Ubuntu 26.04 LTS)](./guide_ubuntu.md)
+- [Windows (Verified in Windows 11)](./docs/guide_win.md)
+- [Ubuntu (Veirified in Ubuntu 26.04 LTS)](./docs/guide_ubuntu.md)
 
 You need to install some dependencies to work with Lua.
 

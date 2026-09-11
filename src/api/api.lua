@@ -16,7 +16,12 @@ function api.handle(message)
         return selectAllTasks()
 
     else
-        return "There is a problem to identify the request action"
+        local result = {
+            message = "There is a problem to identify the request action",
+            data = nil
+        }
+
+        return result
     end
 
 end

@@ -1,30 +1,107 @@
 body {
-    width: 100%;
-    height: 100%;
     background-image: url(../assets/images/background.svg);
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    max-height: 300px;
+    min-height: 100px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    padding: 0vw 2vw;
+}
+
+header figure {
+    display: flex;
+    width: 75px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    margin-left: auto;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+}
+
+header button figure {
+    max-width: 25px;
+    max-height: 25px;
 }
 
 main {
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: transparent;
+    padding: 2vh 2vw;
 }
 
 main h1 {
-    font-size: 25px;
+    text-align: center;
+    font-size: 4.5rem;
+    color: white;
 }
 
 main p {
-    font-size: 12px;
-}
-
-main section {
+    display: flex;
+    width: 65%;
     align-self: center;
+    text-align: center;
+    font-size: 1.25rem;
+    color: white;
 }
 
-main section span {
-    justify-self: left;
-    align-self: flex-start;
+main h2 {
+    font-size: 1.5rem;
+    color: white;
+    text-align: left;
+    margin-bottom: 2.5vh;
+}
+
+main .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    height: auto;
+}
+
+main .controls article {
+    display: flex;
+    width: 225px;
+    height: 150px;
+    border-radius: 15px;
+}
+
+main .controls .create_control {
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.386);
+    background-color: rgba(255, 255, 255, 0.099);
+}
+
+main .controls .create_control button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+main .controls .create_control button figure {
+    max-width: 50px;
+    max-height: 50px;
 }

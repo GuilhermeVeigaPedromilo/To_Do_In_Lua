@@ -40,12 +40,64 @@ header button figure {
     max-height: 25px;
 }
 
+#settings_btn figure {
+    transition: transform 0.3s ease-in-out
+}
+
+#settings_btn:hover figure{
+    transform: rotate(90deg);
+}
+
 main {
     min-height: 75vh;
     display: flex;
     flex-direction: column;
     background-color: transparent;
     padding: 2vh 2vw;
+}
+
+#settings_dialog {
+    width: 0;
+    margin-left: auto;
+    min-height: 100vh;
+    background-color: rgb(94, 88, 83);
+    border-top: none;
+    border-bottom: none;
+    color: white;
+    transition: width 0.3s ease-in-out, 
+                opacity 0.3s ease-in-out, 
+                display 0.3s ease-in-out allow-discrete;
+}
+
+#settings_dialog::backdrop, #create_control_dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#settings_dialog[open] {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 2vw;
+}
+
+@starting-style {
+    #settings_dialog[open] {
+        width: 0
+    }
+}
+
+.close_btn {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    margin-left: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+.close_settings_btn figure {
+    min-width: 100%;
+    min-height: 100%;
 }
 
 main h1 {
@@ -63,7 +115,7 @@ main p {
     color: white;
 }
 
-main h2 {
+main h3 {
     font-size: 1.5rem;
     color: white;
     text-align: left;
@@ -104,4 +156,42 @@ main .controls .create_control button {
 main .controls .create_control button figure {
     max-width: 50px;
     max-height: 50px;
+}
+
+#create_control_dialog {
+    width: 50%;
+    min-height: 50%;
+    margin: auto auto;
+    background-color: rgb(94, 88, 83);
+    color: white;
+    border-radius: 12px;
+    gap: 2rem;
+    transition: all 0.5s ease-in-out, 
+}
+
+#create_control_dialog[open] {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    flex-direction: column;
+    padding: 2vh 2vw;
+}
+
+@starting-style {
+    #settings_dialog[open] {
+        width: 0
+    }
+}
+
+#create_control_dialog .close_btn {
+    align-self: flex-start;
+}
+
+#create_control_dialog form {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: auto;
 }

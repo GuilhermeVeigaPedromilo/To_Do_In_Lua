@@ -11,31 +11,60 @@
         <figure>
             <img src="./src/assets/icons/logo.svg" alt="Logo of App">
         </figure>
-        <button>
+        <button id="settings_btn" commandFor="settings_dialog" command="show-modal">
             <figure>
                 <img src="./src/assets/icons/settings.svg" alt="Settings Icon">
             </figure>
             <span>Settings</span>
         </button>
+        <dialog id="settings_dialog" close>
+            <button class="close_btn" commandFor="settings_dialog" command="close">
+                <figure>
+                    <img src="./src/assets/icons/close.svg" alt="Close tab with this button">
+                </figure>
+            </button>
+            <h1>Settings</h1>
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="ptbr">Portuguese (Brazil)</option>
+            </select>
+            <select id="themeSelect">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </dialog>
     </header>
     <main>
         <h1>Welcome to To Do in Lua</h1>
         <p>This is a sample application in Lua with Web View as GUI (Graphical User Interface) totaly compatible with Windows Environment.
             You may manager your tasks controls and your tasks through this app.
         </p>
-        <h2>Your Controls:</h2>
+        <h3>Your Controls:</h3>
         <section class="controls">
-            <!-- <a href="./src/pages/task_control.html">My First Control</a> -->
              <article class="create_control">
-                <button onclick="invoke_task_creation(VerifyInvoke())">
+                <!-- <button onclick="invoke_task_creation(VerifyInvoke())"> -->
+                <button commandFor="create_control_dialog" command="show-modal">
                     <figure>
                         <img src="./src/assets/icons/create.svg" alt="Icon to create a new control">
                     </figure>
                 </button>  
              </article>
         </section>
+        <dialog id="create_control_dialog" close>
+            <button class="close_btn" commandFor="create_control_dialog" command="close">
+                <figure>
+                    <img src="./src/assets/icons/close.svg" alt="Close tab with this button">
+                </figure>
+            </button>
+            <h2>Create a New Control</h2>
+            <form id="create_control_form" method="post">
+                <input id="name" placeholder="Control Name" required>
+                <textarea id="description" placeholder="Description"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </dialog>
     </main>
     <script src="./src/middleware/VerifyInvoke.js"></script>
-    <script src="./src/js/InvokeCreateTask.js"></script>
+    <script src="./src/js/InvokeControlCreation.js"></script>
 </body>
 </html>

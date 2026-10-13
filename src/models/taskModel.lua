@@ -2,20 +2,20 @@ local dbConfig = require("src.config.database")
 
 dbConfig:exec([[
   CREATE TABLE IF NOT EXISTS tasks (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_task INTEGER PRIMARY KEY AUTOINCREMENT,,
+    id_control INTEGER NOT NULL, 
     title TEXT NOT NULL,
     description TEXT,
-    status INTEGER NOT NULL DEFAULT 0
+    status INTEGER NOT NULL DEFAULT 0,
+    CONSTRAINT fk_id_control FOREIGN KEY(id_control) REFERENCES controls(id_control)
   )
 ]])
-
--- dbConfig:exec("DELETE FROM tasks")
 
 local function post_createTask(
     title,
     description
 )
-    local query = dbConfig:prepare("INSERT INTO tasks (title, description) VALUES (?, ?)")
+    local query = dbConfig:prepare("INSERT INTO tasks (title, description, id_control) VALUES (?, ?, ?)")
     query:bind_values(title, description)
     local query_status = query:step()
     query:finalize()
@@ -29,7 +29,7 @@ end
 
 local function get_allTasks()
     local result = {
-        data = dbConfig:nrows("SELECT * FROM tasks"),
+        data = dbConfig:nrows("SELECT * FROM tasks t INNER JOIN controls c ON t.id_control = c.id_control"),
         message = "All tasks were selected"
     }
 
@@ -37,7 +37,9 @@ local function get_allTasks()
 end
 
 local function get_findTask(id_task)
-    local query = dbConfig:prepare("SELECT * FROM tasks WHERE id = ?")
+    local query = dbConfig:prepare(
+    'SELECT * FROM tasks t WHERE t.id_task = ? INNER JOIN controls c ON t.id_control = c.id_control'
+    )
     query:bind_values(id_task)
 
     local query_status = query:step()
